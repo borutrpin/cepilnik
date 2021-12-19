@@ -15,7 +15,7 @@ layout="wide"
 st.write(""" S tem orodjem lahko ugotovite, kakšna so vaša cepilna priporočila.""")
 st.write("Pripravljeno po priporočilih NIJZ (november/december 2021) in infografiki Sci Mamas Vaccine Forum")
 st.write("Izračuni so informativne narave.")
-st.write()
+st.write("Python skript na: https://github.com/borutrpin/cepilnik")
 st.write("Avtor: Borut Trpin")
 cepivo = st.selectbox(
      'Ali ste cepljeni?',
