@@ -13,8 +13,10 @@ page_icon="💉",
 layout="wide"
 )
 st.write(""" S tem orodjem lahko ugotovite, kakšna so vaša cepilna priporočila.""")
-st.write("Pripravljeno po priporočilih NIJZ (november 2021)")
+st.write("Pripravljeno po priporočilih NIJZ (november/december 2021) in infografiki Sci Mamas Vaccine Forum")
 st.write("Izračuni so informativne narave.")
+st.write()
+st.write("Avtor: Borut Trpin")
 cepivo = st.selectbox(
      'Ali ste cepljeni?',
      ('ne', 'mRNA cepivo (Pfizer ali Moderna)','vektorsko cepivo Astra Zeneca','vektorsko cepivo Janssen',"mešana shema (Pfizer+Moderna, AZ+Pfizer itd)"))
@@ -37,7 +39,9 @@ else:
                 st.write("** od 18 do 30 let: Pfizer")
                 st.write("** nad 30 let: Pfizer ali Moderna (1/2 odmerka)")
             elif cepivo=="mRNA cepivo (Pfizer ali Moderna)" or cepivo=="mešana shema (Pfizer+Moderna, AZ+Pfizer itd)":
-                st.write("Pojdite po poživitveni odmerek z mRNA cepivom (Pfizer ali Moderna) od: "+str(kdajpolnocepljeni+datetime.timedelta(days=180))+" (LETO-MESEC-DAN) dalje.**")
+                st.write("Priporočilo: pojdite po poživitveni odmerek z mRNA cepivom (Pfizer ali Moderna) od: "+str(kdajpolnocepljeni+datetime.timedelta(days=180))+" (LETO-MESEC-DAN) dalje.**")
+                st.write("Možnost poživitvenega odmerka od: "+str(kdajpolnocepljeni+datetime.timedelta(days=90))+" (LETO-MESEC-DAN) dalje.**")
+
                 st.write("** od 18 do 30 let: Pfizer")
                 st.write("** nad 30 let: Pfizer ali Moderna (1/2 odmerka)")
         else:
@@ -56,7 +60,7 @@ else:
         kdajpreboleli = st.date_input("Kdaj se je začela bolezen covid-19? (LETO/MM/DD)",datetime.date(2021,3,15))
         if cepivo=="ne":
             st.write("Opcija 1: Cepite se z enim odmerkom cepiva najkasneje do: "+str(kdajpreboleli+datetime.timedelta(days=270))+" (LETO-MESEC-DAN).**")
-            st.write("Opcija 2: Cepite se z dvema odmerkoma cepiva od: "+str(kdajpreboleli+datetime.timedelta(days=270))+" (LETO-MESEC-DAN) dalje.**")
+            st.write("Opcija 2: Cepite se z dvema odmerkoma cepiva (polna shema) od: "+str(kdajpreboleli+datetime.timedelta(days=270))+" (LETO-MESEC-DAN) dalje.**")
             st.write("** od 18 do 30 let: Pfizer")
             st.write("** nad 30 let: Pfizer ali Moderna (1/2 odmerka)")
             st.write("****:PCT pogoje izpolnjujete do: "+str(kdajpreboleli+datetime.timedelta(days=180)))
@@ -77,7 +81,7 @@ else:
                     drugiodmerek=st.selectbox("Ali ste že prejeli drugi odmerek cepiva?",("ne","ja"))
                     if drugiodmerek=="ne":
                        st.write( "Pojdite po drugi odmerek na predviden datum.")
-                       st.write("Najbrž: Poživitveni odmerek kasneje NI potreben, a je možen na lastno željo.")   
+                       st.write("Najbrž: Poživitveni odmerek NI potreben, a je možen na lastno željo.")
                     else:
                         st.write("Najbrž: Poživitveni odmerek NI potreben, a je možen na lastno željo.")
                 else:
@@ -91,9 +95,8 @@ else:
                     else:
                         st.write("Najbrž: Poživitveni odmerek NI potreben, a je možen na lastno željo.")
                 else:
-                       st.write( "Pojdite po drugi odmerek cepiva.")
-                       st.write("Najbrž: Če dobite drugi odmerek do: "+str(kdajpreboleli+datetime.timedelta(days=270))+" (LETO-MESEC-DAN), potem poživitveni odmerek NE BO potreben, a bo možen na lastno željo.")
-                       st.write("Najbrž: Tudi če dobite drugi odmerek kasneje od: "+str(kdajpreboleli+datetime.timedelta(days=270))+" (LETO-MESEC-DAN), potem poživitveni odmerek NE BO potreben, a bo možen na lastno željo.")
+                       st.write( "Pojdite po drugi odmerek cepiva do: "+str(kdajpreboleli+datetime.timedelta(days=270))+" (LETO-MESEC-DAN).")
+                       st.write("Najbrž: Poživitveni odmerek NE BO potreben, a bo možen na lastno željo.")
             else:
                 st.write("Najbrž: Poživitveni odmerek NI potreben, a je možen na lastno željo.")
                 
